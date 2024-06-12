@@ -34,7 +34,7 @@ const checkDB = async () => {
 // Función para sincronizar los modelos definidos en nuestro código con nuestra base de datos
 const syncModels = async () => {
   try {
-    await connection.sync() //dentro de sync podemos añadir {alter: true} si queremos modificar la estructura de una tabla ya existente, o {force: true} si queremos borrar el contenido de la base de datos y crearlo desde cero.
+    await connection.sync({alter: true}) //dentro de sync podemos añadir {alter: true} si queremos modificar la estructura de una tabla ya existente, o {force: true} si queremos borrar el contenido de la base de datos y crearlo desde cero.
     console.log('Models syncrhonized!')
   } catch (error) {
     console.error("Unable to sync models:")
