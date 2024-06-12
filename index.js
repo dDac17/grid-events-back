@@ -9,7 +9,9 @@ const {
 const defineRelations = require('./database/relations')
 
 const startDB = async () => {
-  await checkDB()          // 1. Comprobar conexión
+  await checkDB()     
+  await defineRelations()
+  syncModels()
 }
 
 const app = express()
