@@ -14,9 +14,15 @@ const startDB = async () => {
   syncModels()
 }
 
-const app = express()
+const router = require("./api/routes")
 
-app.listen(process.env.DB_PORT, () => {
-  console.log(`Server started! Listening on port ${process.env.DB_PORT}`)
+const app = express()
+app.use(express.json()) // Le damos la capacidad a nuestra api de traducir los JSON que reciba en las peticiones a un objeto de javascript
+app.use(morgan('dev'))
+
+app.use('/api', router)
+
+app.listen(process.env.PORT, () => {
+  console.log(`Server started! Listening on port ${process.env.PORT}`)
   startDB() // Iniciamos la conexión al servidor una vez nuestro servidor esté arrancado y esperando peticiones
 })

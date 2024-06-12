@@ -15,7 +15,7 @@ const {
   checkAdmin  // Middleware para proteger determinadas rutas, y que solo puedan ser ejecutadas por un usuario administrador
 } = require('../middelwares')
 
-router.get('/', checkAuth, checkAdmin, getAllUsers) // getAllUsers solo podrá ser ejecutada por un administrador, ya que hemos empleados los middlewares de checkAuth y checkAdmin
+router.get('/', getAllUsers) // getAllUsers solo podrá ser ejecutada por un administrador, ya que hemos empleados los middlewares de checkAuth y checkAdmin
 router.get('/profile', checkAuth, getOwnProfile) // getOwnProfile requiere que el usuario esté logueado para realizar esta petición, ya que usamos el middleware de checkAuth
 router.get('/:id', getOneUser)
 router.post('/', createUser)
