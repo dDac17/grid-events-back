@@ -2,21 +2,21 @@ const { Sequelize } = require('sequelize')
 
 // Método de conexión a la base de datos pasándole cada información por separado (Opción 3 en https://sequelize.org/docs/v6/getting-started/#connecting-to-a-database)
 
-// const connection = new Sequelize(
-  //   process.env.DB_NAME,
-  //   process.env.DB_USER,
-  //   process.env.DB_PASS,
-  //   {
-    //     host: process.env.DB_HOST,
-//     dialect: process.env.DB_DIALECT,
-//     logging: false
-//   }
-// )
+const connection = new Sequelize(
+    process.env.DB_NAME,
+    process.env.DB_USER,
+    process.env.DB_PASS,
+    {
+      host: process.env.DB_HOST,
+    dialect: process.env.DB_DIALECT,
+    logging: false
+  }
+ )
 
 // Método de conexión a la base datos pasándole la url de conexión completa (Opción 1 en https://sequelize.org/docs/v6/getting-started/#connecting-to-a-database)
-const connection = new Sequelize(process.env.DB_URL, {
-  logging: false
-})
+//const connection = new Sequelize(process.env.DB_URL, {
+  //logging: false
+//})
 // 'connection' será nuestra instancia de la conexión a nuestra base de datos
 
 
