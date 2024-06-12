@@ -14,23 +14,23 @@ const Events = connection.define(
     },
     description: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: true
     },
     price: {
         type: DataTypes.INTEGER,
-        allowNull: false
+        allowNull: true
     },
     about: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: true
     },
       maxTickets: {
         type: DataTypes.INTEGER,
-        allowNull: false
+        allowNull: true
     },
       tickets_sold: {
         type: DataTypes.INTEGER,
-        allowNull: false
+        allowNull: true
     },
       date: {
         type: DataTypes.DATE,
@@ -38,7 +38,7 @@ const Events = connection.define(
     },
       location: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: true
     },
     likes: {
         type: DataTypes.INTEGER,

@@ -7,6 +7,10 @@ const defineRelations = () => {
   User.hasMany(Event)
   Event.belongsTo(User) 
 
+  //Event.hasMany(Ticket)
+  //Ticket.belongsTo(Event)
+
+  
   // Category.hasMany(Event)
   // Event.belongsTo(Category) // Esto generará una columna en joke, llamada 'category_id' con una foreign key a la tabla 'category'
 
