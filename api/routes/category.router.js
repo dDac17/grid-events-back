@@ -9,11 +9,17 @@ const {
   getCategoryEvent
 } = require("../controllers/category.controller")
 
+const {
+  checkAuth,
+  checkAdmin
+} = require('../middelwares')
+
+
 router.get("/", getAllCategories)
 router.get("/:id", getOneCategory)
 router.get('/:id/event', getCategoryEvent)
-router.post("/", createCategory)
-router.put("/:id", updateOneCategory)
-router.delete("/:id", deleteOneCategory)
+router.post("/",checkAuth, checkAdmin, createCategory)
+router.put("/:id",checkAuth, checkAdmin, updateOneCategory)
+router.delete("/:id", checkAuth, checkAdmin, deleteOneCategory)
 
 module.exports = router

@@ -11,9 +11,9 @@ const {
   } = require('../middelwares')
   
   
-  router.post('/', createComment)
+  router.post('/',checkAuth, createComment)
   router.get('/', getAllComments)
-  router.delete('/:id', deleteComment)
+  router.delete('/:id', checkAuth, deleteComment)
   // router.put('/:id/like', addLike)
   
   module.exports = router

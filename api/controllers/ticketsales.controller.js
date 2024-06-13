@@ -56,7 +56,8 @@ const getAllTickets = async (req, res) => {
     try {
       const newEvent = {
         ...req.body,
-       // user_id: req.locals.user.id
+        event_id: req.params.event_id,
+        user_id: req.locals.user.id
       }
       const ticket = await Ticket.create(newEvent)
   

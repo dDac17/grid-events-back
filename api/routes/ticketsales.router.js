@@ -10,8 +10,8 @@ const {
     checkAuth
   } = require('../middelwares')
 
-router.post('/', createTicket)
-router.get('/', getAllTickets)
-router.get('/:id', getOneTicket)
+router.post('/:event_id',  checkAuth, createTicket) // le pasamos el ID del evento
+router.get('/', checkAuth, getAllTickets)
+router.get('/:id', checkAuth, getOneTicket)
 
 module.exports = router
