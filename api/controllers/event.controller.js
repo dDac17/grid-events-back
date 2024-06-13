@@ -133,7 +133,7 @@ const deleteEvent = async (req, res) => {
 
 const addFavouriteEvent = async (req, res) => {
   try {
-    const event = await event.findByPk(req.params.id)
+    const event = await Event.findByPk(req.params.id)
 
     if (!event) {
       res.status(404).json()
@@ -142,12 +142,12 @@ const addFavouriteEvent = async (req, res) => {
     // Al definir una relación Many to Many entre event y User, Sequelize nos ha generado automáticamente el método addUser, donde podemos añadir al usuario que tenemos guardado en res.locals, que es el usuario logueado
     await event.addUser(res.locals.user)
 
-    res.status(200).json({
+    return res.status(200).json({
       message: 'Event added',
       result: event
     })
   } catch (error) {
-    
+    console.error(error)
   }
 }
 

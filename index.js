@@ -1,4 +1,4 @@
-require("dotenv").config() // Requerimos dotenv en el archivo principal para poder emplear variables de entorno en todo el proyecto (process.env)
+require("dotenv").config()
 const express = require('express')
 const morgan = require('morgan')
 
@@ -17,7 +17,7 @@ const startDB = async () => {
 const router = require("./api/routes")
 
 const app = express()
-app.use(express.json()) // Le damos la capacidad a nuestra api de traducir los JSON que reciba en las peticiones a un objeto de javascript
+app.use(express.json()) // Traduce los JSON que reciba en las peticiones a un objeto de javascript
 app.use(morgan('dev'))
 
 app.use('/api', router)
