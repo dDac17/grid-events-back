@@ -28,11 +28,7 @@ const getAllEvents = async (req, res) => {
 
   const getOneEvent = async (req, res) => {
     try {
-      const event = await Event.findByPk(req.params.id, {
-        include: {
-          model: Event 
-        }
-      })
+      const event = await Event.findByPk(req.params.id)
   
       if (!event) {
         res.status(404).json({
@@ -56,7 +52,11 @@ const getAllEvents = async (req, res) => {
 
 const createEvent = async (req, res) => {
   try {
-    const event = await Event.create(req.body)
+    const newEvent = {
+      ...req.body,
+     // user_id: req.locals.user.id
+    }
+    const event = await Event.create(newEvent)
 
     res.status(200).json({
       message: "Event created",

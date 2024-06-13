@@ -6,6 +6,7 @@ const userRouter = require('./user.router')
 const commentRouter = require('./comment.router')
 const categoryRouter = require('./category.router')
 const eventRouter = require('./event.router')
+const ticketRouter = require('./ticketsales.router')
 // const authRouter = require('./auth.router')
 
 // Según la siguiente parte del endpoint (/api/user, o /api/joke, etc.), dirigimos la petición a su router correspondiente
@@ -13,6 +14,7 @@ router.use('/user', userRouter)
 router.use('/comment', commentRouter)
 router.use('/category', categoryRouter)
 router.use('/event', eventRouter)
+router.use('/ticket', ticketRouter)
 //router.use('/auth', authRouter)
 
 module.exports = router // Exporto la instancia de este router para poder importarlo en el index.js principal
