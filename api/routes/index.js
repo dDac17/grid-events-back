@@ -4,14 +4,14 @@ const router = require('express').Router() // Creo una instancia de router de ex
 
 const userRouter = require('./user.router')
 // const contactRouter = require('./contact.router')
-// const categoryRouter = require('./category.router')
+ const categoryRouter = require('./category.router')
  const eventRouter = require('./event.router')
 // const authRouter = require('./auth.router')
 
 // Según la siguiente parte del endpoint (/api/user, o /api/joke, etc.), dirigimos la petición a su router correspondiente
 router.use('/user', userRouter)
 //router.use('/contact', contactRouter)
-//router.use('/category', categoryRouter)
+router.use('/category', categoryRouter)
 router.use('/event', eventRouter)
 //router.use('/auth', authRouter)
 

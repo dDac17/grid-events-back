@@ -1,6 +1,6 @@
 const User = require('../api/models/user.model')
 const Event = require('../api/models/event.model')
-// const Category = require('../api/models/category.model')
+const Category = require('../api/models/category.model')
 
 const defineRelations = () => {
   // ONE TO MANY
@@ -11,8 +11,8 @@ const defineRelations = () => {
   //Ticket.belongsTo(Event)
 
   
-  // Category.hasMany(Event)
-  // Event.belongsTo(Category) // Esto generará una columna en joke, llamada 'category_id' con una foreign key a la tabla 'category'
+  Category.hasMany(Event)
+  Event.belongsTo(Category)
 
   //MANY TO MANY
   User.belongsToMany(Event, {
