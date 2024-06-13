@@ -9,11 +9,8 @@ const signup = async (req, res) => {
     const salt = bcrypt.genSaltSync(parseInt(process.env.BCRYPT_SALTS))
     // Encriptamos la contraseña que nos llega por el body de la petición, y la sobreescribimos para luego crear al usuario con la contraseña ya encriptada
     req.body.password = bcrypt.hashSync(req.body.password, salt)
-
+     
     const user = await User.create(req.body)
-
-    // createContact_info es un método generado automáticamente por Sequelize, en el momento de definir una relación One to One entre User y ContactInfo. Podemos aprovecharla para crear automáticamente un nuevo registro de contact info vacío en el momento en el que un nuevo usuario se cree una cuenta, y ya estará automáticamente vinculado al nuevo usuario
-    await user.createContact_info()
 
     // Generamos un token para devolver al cliente, así el usuario ya será capaz de realizar peticiones que reguieran estar logueado
     // {email: user.email} es la información que pasaremos como 'payload'. Cuando desencriptemos el token en el middleware de 'checkAuth', podremos acceder a la info que hayamos definido en este payload.
@@ -21,7 +18,7 @@ const signup = async (req, res) => {
 
     res.status(201).json({
       message: "Signup succesful",
-      result: token,
+      result: {token, user},
     })
   } catch (error) {
     console.log(error);
@@ -68,7 +65,7 @@ const login = async (req, res) => {
     })
 
     res.status(200).json({
-      message: "login succesful",
+      message: "login successful",
       result: token,
     });
   } catch (error) {
