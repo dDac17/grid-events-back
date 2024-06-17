@@ -2,7 +2,7 @@ const User = require('../models/user.model')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 
-// Función para que nuevos usuarios puedan crearse una cuenta
+
 const signup = async (req, res) => {
   try {
     // Generamos el salto, el string aleatorio que se utilizará para encriptar la contraseña
@@ -46,12 +46,10 @@ const login = async (req, res) => {
       });
     }
 
-    // Si hemos llegado hasta aquí, es que hay un usuario en la base de datos con el email facilitado. Ahora falta comprobar la validez de la contraseña.
 
-    // función que nos compara la contraseña facilitada en el momento del logueo con la contraseña encriptada guardada en la base de datos. Encriptará la contraseña facilitada y comparará su resultado con la de la base de datos.
     const result = bcrypt.compareSync(req.body.password, user.password)
 
-    // Si result es false, significa que las contraseñas enciptadas no coinciden, por lo tanto la contraseña facilitada es erróena
+  
     if (!result) {
         return res.status(401).json({
           message: "Email or password incorrect",
