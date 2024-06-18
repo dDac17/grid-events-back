@@ -1,6 +1,7 @@
 require("dotenv").config()
 const express = require('express')
 const morgan = require('morgan')
+const cors = require('cors')
 
 const { 
   checkDB, 
@@ -11,7 +12,7 @@ const defineRelations = require('./database/relations')
 const startDB = async () => {
   await checkDB()     
   await defineRelations()
-  //syncModels()
+ // syncModels()
 }
 
 const router = require("./api/routes")
@@ -19,6 +20,7 @@ const router = require("./api/routes")
 const app = express()
 app.use(express.json()) // Traduce los JSON que reciba en las peticiones a un objeto de javascript
 app.use(morgan('dev'))
+app.use(cors())
 
 app.use('/api', router)
 
