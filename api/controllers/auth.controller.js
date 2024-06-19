@@ -9,16 +9,16 @@ const signup = async (req, res) => {
     const salt = bcrypt.genSaltSync(parseInt(process.env.BCRYPT_SALTS))
     // Encriptamos la contraseña que nos llega por el body de la petición, y la sobreescribimos para luego crear al usuario con la contraseña ya encriptada
     req.body.password = bcrypt.hashSync(req.body.password, salt)
-     
+     console.log (req.body)
     const user = await User.create(req.body)
 
     // Generamos un token para devolver al cliente, así el usuario ya será capaz de realizar peticiones que reguieran estar logueado
     // {email: user.email} es la información que pasaremos como 'payload'. Cuando desencriptemos el token en el middleware de 'checkAuth', podremos acceder a la info que hayamos definido en este payload.
     const token = jwt.sign({ email: user.email }, process.env.JWT_SECRET, { expiresIn: '1h' })
 
-    res.status(201).json({
+    res.status(200).json({
       message: "Signup succesful",
-      result: {token, user},
+      result: {token, role:user.role},
     })
   } catch (error) {
     console.log(error);
@@ -66,7 +66,7 @@ const login = async (req, res) => {
 
     res.status(200).json({
       message: "login successful",
-      result: token,
+      result: {token, role: user.role}
     });
   } catch (error) {
     console.log(error);
