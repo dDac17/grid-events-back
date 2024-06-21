@@ -57,6 +57,7 @@ const createEvent = async (req, res) => {
      // user_id: req.locals.user.id
     }
     const event = await Event.create(newEvent)
+    
 
     res.status(200).json({
       message: "Event created",
