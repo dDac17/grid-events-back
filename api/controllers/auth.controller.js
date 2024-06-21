@@ -14,7 +14,7 @@ const signup = async (req, res) => {
 
     // Generamos un token para devolver al cliente, así el usuario ya será capaz de realizar peticiones que reguieran estar logueado
     // {email: user.email} es la información que pasaremos como 'payload'. Cuando desencriptemos el token en el middleware de 'checkAuth', podremos acceder a la info que hayamos definido en este payload.
-    const token = jwt.sign({ email: user.email }, process.env.JWT_SECRET, { expiresIn: '1h' })
+    const token = jwt.sign({ email: user.email }, process.env.JWT_SECRET, { expiresIn: '1d' })
 
     res.status(200).json({
       message: "Signup succesful",
@@ -59,12 +59,12 @@ const login = async (req, res) => {
 
     // Si ha ido todo bien, generamos un token y lo devolvemos al usuario
     const token = jwt.sign({ email: user.email }, process.env.JWT_SECRET, {
-      expiresIn: "1h",
+      expiresIn: "1d",
     })
 
     res.status(200).json({
       message: "login successful",
-      result: {token, role: user.role}
+      result: { token, role: user.role, userId: user.id }
     });
   } catch (error) {
     console.log(error);
