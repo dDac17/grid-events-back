@@ -4,7 +4,6 @@ const { connection } = require('../../database') // Instancia de la conexión ge
 const Users = connection.define(
   "users", // Nombre de la tabla en la base de datos
   {
-    // Columnas de la tabla
     firstname: {
       type: DataTypes.STRING,
       allowNull: true,

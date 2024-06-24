@@ -9,7 +9,7 @@ const eventRouter = require('./event.router')
 const ticketRouter = require('./ticketsales.router')
 const authRouter = require('./auth.router')
 
-// Según la siguiente parte del endpoint (/api/user, o /api/joke, etc.), dirigimos la petición a su router correspondiente
+// Según la siguiente parte del endpoint (/api/user, o /api/event, etc.), dirigimos la petición a su router correspondiente
 router.use('/user', userRouter)
 router.use('/comment', commentRouter)
 router.use('/category', categoryRouter)
