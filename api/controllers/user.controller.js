@@ -59,10 +59,7 @@ const getOneUser = async (req, res) => {
 const getOwnProfile = async (req, res) => {
   try {
     const user = await User.findByPk(res.locals.user.id, {
-      include:[ // EAGER LOADING: Devolvemos la info de contacto y todos los chistes que tenga como favoritos
-      {
-        model: User,
-      }, 
+      include:[ // EAGER LOADING: Devolvemos la info de contacto y todos los eventos que tenga como favoritos 
       {
         model: Event
       }
