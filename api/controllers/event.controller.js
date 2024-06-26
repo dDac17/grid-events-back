@@ -57,6 +57,7 @@ const createEvent = async (req, res) => {
      // user_id: req.locals.user.id
     }
     const event = await Event.create(newEvent)
+    
 
     res.status(200).json({
       message: "Event created",
@@ -162,9 +163,9 @@ const addLike = async (req, res) => {
       })
     }
 
-    event.likes++ // Aumentamos en 1 el contador de likes
+    event.likes++ 
 
-    await event.save() // Guardamos los cambios realizados al chiste en la base de datos
+    await event.save() 
 
     res.status(200).json({
       message: 'Like added',
