@@ -48,7 +48,7 @@ const Users = connection.define(
     }
   },
   {
-    timestamps: true // Indicamos que no queremos generar las columnas de 'fecha de creación' ni de 'fecha de última actualización'
+    timestamps: false // Indicamos que no queremos generar las columnas de 'fecha de creación' ni de 'fecha de última actualización'
   }
 )
 
