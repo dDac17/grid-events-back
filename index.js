@@ -12,7 +12,7 @@ const defineRelations = require('./database/relations')
 const startDB = async () => {
   await checkDB()     
   await defineRelations()
- // syncModels()
+  syncModels()
 }
 
 const router = require("./api/routes")
